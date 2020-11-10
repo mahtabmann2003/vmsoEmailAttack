@@ -2,7 +2,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
-public class SpaceShip {
+public class VmsoCharacter {
 
     private int dx;
     private int dy;
@@ -12,7 +12,7 @@ public class SpaceShip {
     private int h;
     private Image image;
 
-    public SpaceShip() {
+    public VmsoCharacter() {
 
         loadImage();
     }

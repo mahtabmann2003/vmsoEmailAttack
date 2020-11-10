@@ -12,7 +12,7 @@ import javax.swing.Timer;
 public class Board extends JPanel implements ActionListener {
 
     private Timer timer;
-    private SpaceShip spaceShip;
+    private VmsoCharacter spaceShip;
     private final int DELAY = 10;
 
     public Board() {
@@ -26,7 +26,7 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.black);
         setFocusable(true);
 
-        spaceShip = new SpaceShip();
+        spaceShip = new VmsoCharacter();
 
         timer = new Timer(DELAY, this);
         timer.start();
