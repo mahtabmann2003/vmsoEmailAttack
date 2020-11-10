@@ -47,8 +47,8 @@ public class Board extends JPanel implements ActionListener {
 
         g2d.drawImage(spaceShip.getImage(), spaceShip.getX(), 390, this);
 
-        System.out.println("x: "+spaceShip.getX());
-        System.out.println("y: "+spaceShip.getY());
+//        System.out.println("x: "+spaceShip.getX());
+//        System.out.println("y: "+spaceShip.getY());
     }
 
     @Override

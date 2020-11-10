@@ -60,12 +60,14 @@ public class VmsoCharacter {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) {
+        if (key == KeyEvent.VK_LEFT && x >= 600) {
             dx = -2;
+            System.out.println("Left Test");
         }
 
-        if (key == KeyEvent.VK_RIGHT) {
+        if (key == KeyEvent.VK_RIGHT && x <= 100) {
             dx = 2;
+            System.out.println("Right Test");
         }
 
     }
