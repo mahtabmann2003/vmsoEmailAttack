@@ -16,7 +16,7 @@ public class MovingSpriteVmso extends JFrame {
         add(new Board());
 
         setTitle("Moving sprite");
-        setSize(500, 500);
+        setSize(700, 500);
 
         setLocationRelativeTo(null);
         setResizable(false);
