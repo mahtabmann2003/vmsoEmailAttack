@@ -7,7 +7,7 @@ public class SpaceShip {
     private int dx;
     private int dy;
     private int x = 40;
-    private int y = 60;
+    private int y = 390;
     private int w;
     private int h;
     private Image image;
@@ -68,14 +68,6 @@ public class SpaceShip {
             dx = 2;
         }
 
-        if (key == KeyEvent.VK_UP) {
-            dy = -2;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 2;
-        }
-
     }
 
     public void keyReleased(KeyEvent e) {
@@ -90,12 +82,5 @@ public class SpaceShip {
             dx = 0;
         }
 
-        if (key == KeyEvent.VK_UP) {
-            dy = 0;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 0;
-        }
     }
 }

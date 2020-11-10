@@ -45,8 +45,7 @@ public class Board extends JPanel implements ActionListener {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.drawImage(spaceShip.getImage(), spaceShip.getX(),
-                spaceShip.getY(), this);
+        g2d.drawImage(spaceShip.getImage(), spaceShip.getX(), 390, this);
 
         System.out.println("x: "+spaceShip.getX());
         System.out.println("y: "+spaceShip.getY());
@@ -62,7 +61,7 @@ public class Board extends JPanel implements ActionListener {
 
         spaceShip.move();
 
-        repaint(spaceShip.getX()-1, spaceShip.getY()-1,
+        repaint(spaceShip.getX()-1, 390,
                 spaceShip.getWidth()+2, spaceShip.getHeight()+2);
     }
 
