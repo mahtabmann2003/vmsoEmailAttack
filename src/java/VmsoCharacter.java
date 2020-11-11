@@ -61,21 +61,11 @@ public class VmsoCharacter {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            if (x < 0 ){
-                x = 0;
-            } else {
-                dx = -2;
-                System.out.println("x: " + x);
-            }
+            dx = -2;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            if (x < 0){
-                x = 0;
-            }else {
-                dx = 2;
-                System.out.println("x: " + x);
-            }
+            dx = 2;
         }
 
     }
