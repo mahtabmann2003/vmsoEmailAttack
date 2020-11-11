@@ -12,7 +12,9 @@ import javax.swing.Timer;
 public class Board extends JPanel implements ActionListener {
 
     private Timer timer;
-    private VmsoCharacter spaceShip;
+    private VmsoCharacter player;
+    private Enemy enemy;
+
     private final int DELAY = 10;
 
     public Board() {
@@ -26,11 +28,15 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.black);
         setFocusable(true);
 
-        spaceShip = new VmsoCharacter();
-
+        player = new VmsoCharacter();
+        enemy = new Enemy();
         timer = new Timer(DELAY, this);
         timer.start();
+
+
     }
+
+
 
     @Override
     public void paintComponent(Graphics g) {
@@ -45,7 +51,8 @@ public class Board extends JPanel implements ActionListener {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.drawImage(spaceShip.getImage(), spaceShip.getX(), 390, this);
+        g2d.drawImage(player.getImage(), player.getX(), 390, this);
+        g2d.drawImage(enemy.getImage(), enemy.getX(), enemy.getY(), this);
 
 //        System.out.println("x: "+spaceShip.getX());
 //        System.out.println("y: "+spaceShip.getY());
@@ -55,26 +62,35 @@ public class Board extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         step();
+        spawnEnemy();
     }
 
     private void step() {
 
-        spaceShip.move();
+        player.move();
 
-        repaint(spaceShip.getX()-1, 390,
-                spaceShip.getWidth()+2, spaceShip.getHeight()+2);
+        repaint(player.getX()-1, 390,
+                player.getWidth()+2, player.getHeight()+2);
+    }
+
+    private void spawnEnemy(){
+        enemy.move();
+
+        repaint(enemy.getX()-1, enemy.getY(),
+                enemy.getWidth()+2, enemy.getHeight()+2);
+
     }
 
     private class TAdapter extends KeyAdapter {
 
         @Override
         public void keyReleased(KeyEvent e) {
-            spaceShip.keyReleased(e);
+            player.keyReleased(e);
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            spaceShip.keyPressed(e);
+            player.keyPressed(e);
 
         }
     }
