@@ -6,12 +6,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Enemy {
 
 
-    private int speed;
+
     private int x = ThreadLocalRandom.current().nextInt(-0,  700);
     private int y = 0;
     private int w;
     private int h;
     private Image image;
+
 
 
 
