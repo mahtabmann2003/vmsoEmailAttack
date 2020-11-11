@@ -4,9 +4,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 
-public class MovingSpriteVmso extends JFrame {
+public class Main extends JFrame {
 
-    public MovingSpriteVmso() {
+    public Main() {
 
         initUI();
     }
@@ -26,7 +26,7 @@ public class MovingSpriteVmso extends JFrame {
     public static void main(String[] args) {
 
         EventQueue.invokeLater(() -> {
-            MovingSpriteVmso ex = new MovingSpriteVmso();
+            Main ex = new Main();
             ex.setVisible(true);
         });
     }

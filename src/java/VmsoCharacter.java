@@ -64,15 +64,15 @@ public class VmsoCharacter {
             if (x < 0){
                 x = 0;
             }else {
-                dx = -2;
+                dx = -3;
             }
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            if (x > 600 ) {
-                x = 600;
+            if (x > 620 ) {
+                x = 620;
             }else {
-                dx = 2;
+                dx = 3;
             }
         }
 
