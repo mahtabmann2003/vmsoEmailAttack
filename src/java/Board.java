@@ -7,14 +7,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class Board extends JPanel {
 
         private Timer timer;
 
-        private VmsoShip vmsoShip;
-        private Sprite enemy1, enemy2, enemy3;
+        private Sprite enemy1, enemy2, enemy3, vmsoShip;
 
         public Board() {
 
@@ -27,10 +27,10 @@ public class Board extends JPanel {
             setBackground(Color.black);
             setFocusable(true);
 
-            vmsoShip = new VmsoShip();
-            enemy1 = new Sprite("gmail.png",2);
-            enemy2 = new Sprite("email2.png", 3);
-            enemy3 = new Sprite("email3.png", 4);
+            enemy1 = new Sprite("gmail.png",2,0, ThreadLocalRandom.current().nextInt(0,  700), 0);
+            enemy2 = new Sprite("email2.png", 3,0, ThreadLocalRandom.current().nextInt(0,  700), -20);
+            enemy3 = new Sprite("email3.png", 4,0, ThreadLocalRandom.current().nextInt(0,  700), -30);
+            vmsoShip = new Sprite("vmso.png", 0,0, 250,390);
 
             timer = new Timer();
             timedLoop();
@@ -47,11 +47,18 @@ public class Board extends JPanel {
         }
 
         private void gameLoop(){ //Game logic done here...loops repeats every 0.1 second
-            enemyStep(enemy1);
-            enemyStep(enemy2);
-            enemyStep(enemy3);
-            playerStep();
+            step(enemy1);
+            step(enemy2);
+            step(enemy3);
+
+
+            step(vmsoShip);
+
+            //playerStep();
         }
+
+
+
 
 
         @Override
@@ -82,20 +89,20 @@ public class Board extends JPanel {
         }
 
 
-        private void playerStep() {
+        ///private void playerStep() {
 
-            vmsoShip.move();
+       ///     vmsoShip.move();
 
-            repaint(vmsoShip.getX()-1, vmsoShip.getY(), vmsoShip.getWidth()+2, vmsoShip.getHeight()+2);
-        }
+       ///     repaint(vmsoShip.getX()-1, vmsoShip.getY(), vmsoShip.getWidth()+2, vmsoShip.getHeight()+2);
+       /// }
 
 
-        private void enemyStep(Sprite enemy) {
+        private void step(Sprite sprite) {
 
-            enemy.move();
+            sprite.move();
 
-            repaint(enemy.getX()-1, enemy.getY(),
-                        enemy.getWidth()+2, enemy.getHeight()+2);
+            repaint(sprite.getX()-1, sprite.getY(),
+                        sprite.getWidth()+2, sprite.getHeight()+2);
         }
 
 
