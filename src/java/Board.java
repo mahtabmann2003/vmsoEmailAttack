@@ -9,6 +9,7 @@ public class Board extends JPanel implements ActionListener {
 
         private Timer timer;
         private VmsoShip vmsoShip;
+        private Sprite enemy1;
         private final int DELAY = 10;
 
         public Board() {
@@ -23,9 +24,18 @@ public class Board extends JPanel implements ActionListener {
             setFocusable(true);
 
             vmsoShip = new VmsoShip();
+            enemy1 = new Sprite("gmail.png");
 
             timer = new Timer(DELAY, this);
             timer.start();
+            gameLoop();
+
+        }
+
+        private void gameLoop(){
+
+            enemyStep(enemy1);
+
         }
 
         @Override
@@ -43,6 +53,9 @@ public class Board extends JPanel implements ActionListener {
 
             g2d.drawImage(vmsoShip.getImage(), vmsoShip.getX(),
                     vmsoShip.getY(), this);
+
+            g2d.drawImage(enemy1.getImage(), enemy1.getX(),
+                    enemy1.getY(), this);
         }
 
         @Override
@@ -59,6 +72,17 @@ public class Board extends JPanel implements ActionListener {
             repaint(vmsoShip.getX()-1, 250,
                     vmsoShip.getWidth()+2, vmsoShip.getHeight()+2);
         }
+
+        private void enemyStep(Sprite enemy) {
+
+            enemy.move();
+
+
+            repaint(enemy.getX()-1, 250,
+                        enemy.getWidth()+2, enemy.getHeight()+2);
+        }
+
+
 
         private class TAdapter extends KeyAdapter {
 

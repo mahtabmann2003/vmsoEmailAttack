@@ -1,29 +1,44 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Sprite {
-    protected int x;
-    protected int y;
-    protected int width;
-    protected int height;
-    protected boolean visible;
-    protected Image image;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
+    private boolean visible;
+    private Image image;
 
-    public Sprite(int x, int y) {
-        this.x = x;
-        this.y = y;
+
+    public Sprite(String imageName) {
+        this.x = ThreadLocalRandom.current().nextInt(0,  700);
+        this.y = 0;
+        loadImage(imageName);
         visible = true;
     }
-    protected void loadImage(String imageName) {
+
+    private void loadImage(String imageName) {
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();
 
-    }
-    protected void getImageDimensions() {
         width = image.getWidth(null);
         height = image.getHeight(null);
 
     }
+
+    public void move () {
+
+        y = +2;
+    }
+
+
+
+
+    public void setY(int y){
+        this.y = y;
+    }
+
     public Image getImage() {
         return image;
     }
@@ -33,6 +48,8 @@ public class Sprite {
     public int getY() {
         return y;
     }
+    public int getWidth(){return width;}
+    public int getHeight(){return height;}
     public boolean isVisible() {
         return visible;
     }
