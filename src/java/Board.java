@@ -51,6 +51,7 @@ public class Board extends JPanel {
             enemyStep(enemy2);
             enemyStep(enemy3);
             playerStep();
+            collisionCheck();
         }
 
 
@@ -97,6 +98,22 @@ public class Board extends JPanel {
             repaint(enemy.getX()-1, enemy.getY(),
                         enemy.getWidth()+2, enemy.getHeight()+2);
         }
+            public void collisionCheck() {
+               Rectangle r = new Rectangle(vmsoShip.getX(), vmsoShip.getY(), vmsoShip.getWidth(), vmsoShip.getWidth());
+               Rectangle p = new Rectangle(enemy1.getX(), enemy1.getY(), enemy1.getWidth(), enemy1.getHeight());
+               Rectangle q = new Rectangle(enemy2.getX(), enemy2.getY(), enemy2.getWidth(), enemy2.getHeight());
+               Rectangle d = new Rectangle(enemy3.getX(), enemy3.getY(), enemy3.getWidth(), enemy3.getHeight());
+
+               if (r.intersects(p)){
+                   System.exit(0);
+               }
+               if (r.intersects(q)) {
+                   System.exit(0);
+               }
+               if (r.intersects(d)){
+                   System.exit(0);
+               }
+            }
 
 
 

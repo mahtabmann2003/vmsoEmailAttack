@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 public class VmsoShip {
     private int dx;
     private int dy;
-    private int x = 100;
+    private int x = 300;
     private int y = 390;
     private int w;
     private int h;
@@ -64,5 +64,8 @@ public class VmsoShip {
         if (key == KeyEvent.VK_RIGHT) {
             dx = 0;
         }
+    }
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, w, h);
     }
 }
