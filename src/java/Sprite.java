@@ -5,6 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Sprite {
     private int x;
     private int y;
+    private int speed;
     private int width;
     private int height;
     private boolean visible;
@@ -27,17 +28,20 @@ public class Sprite {
 
     }
 
-    public void move () {
+    public void move (int speed) {
+        if (this.y<500){
+            this.y += speed;
+        }
+        else {
+            this.x = ThreadLocalRandom.current().nextInt(0,  700);
+            this.y = 0;
+        }
 
-        y = +2;
     }
 
 
 
 
-    public void setY(int y){
-        this.y = y;
-    }
 
     public Image getImage() {
         return image;

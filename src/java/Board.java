@@ -1,13 +1,18 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
-public class Board extends JPanel implements ActionListener {
+public class Board extends JPanel {
 
         private Timer timer;
+
         private VmsoShip vmsoShip;
         private Sprite enemy1;
         private final int DELAY = 10;
@@ -26,17 +31,25 @@ public class Board extends JPanel implements ActionListener {
             vmsoShip = new VmsoShip();
             enemy1 = new Sprite("gmail.png");
 
-            timer = new Timer(DELAY, this);
-            timer.start();
-            gameLoop();
+            timer = new Timer();
+            timedLoop();
 
+        }
+
+        private void timedLoop(){
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    gameLoop();
+                }
+            }, 100, 10);
         }
 
         private void gameLoop(){
-
             enemyStep(enemy1);
-
+            playerStep();
         }
+
 
         @Override
         public void paintComponent(Graphics g) {
@@ -58,27 +71,20 @@ public class Board extends JPanel implements ActionListener {
                     enemy1.getY(), this);
         }
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
 
-            step();
-        }
-
-        private void step() {
+        private void playerStep() {
 
             vmsoShip.move();
 
-
-            repaint(vmsoShip.getX()-1, 250,
-                    vmsoShip.getWidth()+2, vmsoShip.getHeight()+2);
+            repaint(vmsoShip.getX()-1, vmsoShip.getY(), vmsoShip.getWidth()+2, vmsoShip.getHeight()+2);
         }
 
         private void enemyStep(Sprite enemy) {
 
-            enemy.move();
+            enemy.move(2);
 
 
-            repaint(enemy.getX()-1, 250,
+            repaint(enemy.getX()-1, enemy.getY(),
                         enemy.getWidth()+2, enemy.getHeight()+2);
         }
 
