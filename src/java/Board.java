@@ -14,8 +14,7 @@ public class Board extends JPanel {
         private Timer timer;
 
         private VmsoShip vmsoShip;
-        private Sprite enemy1;
-        private final int DELAY = 10;
+        private Sprite enemy1, enemy2, enemy3;
 
         public Board() {
 
@@ -29,7 +28,9 @@ public class Board extends JPanel {
             setFocusable(true);
 
             vmsoShip = new VmsoShip();
-            enemy1 = new Sprite("gmail.png");
+            enemy1 = new Sprite("gmail.png",2);
+            enemy2 = new Sprite("email2.png", 3);
+            enemy3 = new Sprite("email3.png", 4);
 
             timer = new Timer();
             timedLoop();
@@ -45,8 +46,10 @@ public class Board extends JPanel {
             }, 100, 10);
         }
 
-        private void gameLoop(){
+        private void gameLoop(){ //Game logic done here...loops repeats every 0.1 second
             enemyStep(enemy1);
+            enemyStep(enemy2);
+            enemyStep(enemy3);
             playerStep();
         }
 
@@ -69,6 +72,13 @@ public class Board extends JPanel {
 
             g2d.drawImage(enemy1.getImage(), enemy1.getX(),
                     enemy1.getY(), this);
+
+            g2d.drawImage(enemy2.getImage(), enemy2.getX(),
+                    enemy2.getY(), this);
+
+            g2d.drawImage(enemy3.getImage(), enemy3.getX(),
+                    enemy3.getY(), this);
+
         }
 
 
@@ -79,10 +89,10 @@ public class Board extends JPanel {
             repaint(vmsoShip.getX()-1, vmsoShip.getY(), vmsoShip.getWidth()+2, vmsoShip.getHeight()+2);
         }
 
+
         private void enemyStep(Sprite enemy) {
 
-            enemy.move(2);
-
+            enemy.move();
 
             repaint(enemy.getX()-1, enemy.getY(),
                         enemy.getWidth()+2, enemy.getHeight()+2);

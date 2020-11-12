@@ -6,7 +6,7 @@ public class VmsoShip {
     private int dx;
     private int dy;
     private int x = 100;
-    private int y = 370;
+    private int y = 390;
     private int w;
     private int h;
     private Image image;
@@ -45,11 +45,11 @@ public class VmsoShip {
         int key = e.getKeyCode();
 
          if (key == KeyEvent.VK_LEFT) {
-            dx = -4;
+            dx = -5;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            dx = 4;
+            dx = 5;
         }
     }
 

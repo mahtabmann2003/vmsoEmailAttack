@@ -12,9 +12,10 @@ public class Sprite {
     private Image image;
 
 
-    public Sprite(String imageName) {
+    public Sprite(String imageName, int speed) {
         this.x = ThreadLocalRandom.current().nextInt(0,  700);
         this.y = 0;
+        this.speed = speed;
         loadImage(imageName);
         visible = true;
     }
@@ -28,13 +29,13 @@ public class Sprite {
 
     }
 
-    public void move (int speed) {
+    public void move () {
         if (this.y<500){
-            this.y += speed;
+            this.y += this.speed;
         }
         else {
             this.x = ThreadLocalRandom.current().nextInt(0,  700);
-            this.y = 0;
+            this.y = ThreadLocalRandom.current().nextInt(-150,  -50);
         }
 
     }
