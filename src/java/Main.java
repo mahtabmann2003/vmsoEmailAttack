@@ -15,7 +15,7 @@ public class Main extends JFrame {
 
         add(new Board(username));
 
-        setTitle("Moving sprite");
+        setTitle("VMSO Email Attack");
         setSize(700, 500);
 
         setLocationRelativeTo(null);
