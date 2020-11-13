@@ -5,12 +5,14 @@ import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public class Board extends JPanel {
 
     private Timer timer;
 
     private Sprite enemy1, enemy2, enemy3, vmsoShip;
+    private boolean status;
 
     public Board() {
 
@@ -23,11 +25,12 @@ public class Board extends JPanel {
         setBackground(Color.black);
         setFocusable(true);
 
-        enemy1 = new Sprite("gmail.png",2,0, ThreadLocalRandom.current().nextInt(0,  700), 0);
-        enemy2 = new Sprite("email2.png", 3,0, ThreadLocalRandom.current().nextInt(0,  700), -20);
-        enemy3 = new Sprite("email3.png", 4,0, ThreadLocalRandom.current().nextInt(0,  700), -30);
+        enemy1 = new Sprite("gmail.png",2,0, ThreadLocalRandom.current().nextInt(0,  700), -500);
+        enemy2 = new Sprite("email2.png", 3,0, ThreadLocalRandom.current().nextInt(0,  700), -540);
+        enemy3 = new Sprite("email3.png", 4,0, ThreadLocalRandom.current().nextInt(0,  700), -560);
         vmsoShip = new Sprite("vmso.png", 0,0, 250,390);
 
+        status = true;
         timer = new Timer();
         timedLoop();
 
@@ -43,16 +46,14 @@ public class Board extends JPanel {
     }
 
     private void gameLoop(){ //Game logic done here...loops repeats every 0.1 second
-        step(enemy1);
-        step(enemy2);
-        step(enemy3);
-        step(vmsoShip);
-        collisionCheck();
-
-        //playerStep();
+        if(status) {
+            step(enemy1);
+            step(enemy2);
+            step(enemy3);
+            step(vmsoShip);
+            collisionCheck();
+        }
     }
-
-
 
 
 
@@ -100,27 +101,31 @@ public class Board extends JPanel {
                 sprite.getWidth()+2, sprite.getHeight()+2);
     }
 
-    public void collisionCheck() {
+    public void collisionCheck(){
         Rectangle r = new Rectangle(vmsoShip.getX(), vmsoShip.getY(), vmsoShip.getWidth(), vmsoShip.getWidth());
         Rectangle p = new Rectangle(enemy1.getX(), enemy1.getY(), enemy1.getWidth(), enemy1.getHeight());
         Rectangle q = new Rectangle(enemy2.getX(), enemy2.getY(), enemy2.getWidth(), enemy2.getHeight());
         Rectangle d = new Rectangle(enemy3.getX(), enemy3.getY(), enemy3.getWidth(), enemy3.getHeight());
 
         if (r.intersects(p)){
-            EndScreen ex = new EndScreen();
-            ex.setVisible(true);
+            gameEnd();
 
         }
         if (r.intersects(q)) {
-            EndScreen ex = new EndScreen();
-            ex.setVisible(true);
+            gameEnd();
 
         }
         if (r.intersects(d)){
-            EndScreen ex = new EndScreen();
-            ex.setVisible(true);
+            gameEnd();
         }
     }
+
+    public void gameEnd() {
+        EndScreen ex = new EndScreen();
+        ex.setVisible(true);
+        status = false;
+    }
+
 
 
     private class TAdapter extends KeyAdapter {

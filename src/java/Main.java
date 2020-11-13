@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Main extends JFrame {
 
-    public Main() {
+    public Main(){
 
         initUI();
     }

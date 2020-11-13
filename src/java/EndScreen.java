@@ -30,32 +30,19 @@ public class EndScreen extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        scoreOut = new javax.swing.JTextField();
         btnPlayAgain = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        scoreOut = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 500));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vmsoEnd.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
-        jLabel2.setBackground(new java.awt.Color(153, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Kohinoor Gujarati", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel2.setText("Score:");
-
-        scoreOut.setEditable(false);
-        scoreOut.setBackground(new java.awt.Color(0, 0, 0));
-        scoreOut.setFont(new java.awt.Font("Kohinoor Gujarati", 1, 18)); // NOI18N
-        scoreOut.setForeground(new java.awt.Color(153, 0, 0));
-        scoreOut.setBorder(null);
-
-        btnPlayAgain.setBackground(new java.awt.Color(153, 0, 0));
+        btnPlayAgain.setBackground(new java.awt.Color(0, 0, 0));
         btnPlayAgain.setFont(new java.awt.Font("Chalkduster", 0, 24)); // NOI18N
         btnPlayAgain.setForeground(new java.awt.Color(153, 0, 0));
         btnPlayAgain.setText("PLAY AGAIN");
@@ -70,47 +57,60 @@ public class EndScreen extends javax.swing.JFrame {
             }
         });
 
-        btnExit.setBackground(new java.awt.Color(153, 0, 0));
+        btnExit.setBackground(new java.awt.Color(0, 0, 0));
         btnExit.setFont(new java.awt.Font("Chalkduster", 0, 24)); // NOI18N
         btnExit.setForeground(new java.awt.Color(153, 0, 0));
         btnExit.setText("EXIT");
         btnExit.setBorderPainted(false);
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
+                System.exit(0);
             }
         });
+
+        jLabel2.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Kohinoor Gujarati", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 0, 0));
+        jLabel2.setText("Score:");
+
+        scoreOut.setEditable(false);
+        scoreOut.setBackground(new java.awt.Color(0, 0, 0));
+        scoreOut.setFont(new java.awt.Font("Kohinoor Gujarati", 1, 18)); // NOI18N
+        scoreOut.setForeground(new java.awt.Color(153, 0, 0));
+        scoreOut.setBorder(null);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(230, 230, 230)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPlayAgain)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(scoreOut, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scoreOut, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPlayAgain))
+                .addGap(120, 120, 120)
                 .addComponent(btnExit)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPlayAgain, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnPlayAgain)
+                    .addComponent(btnExit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(scoreOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(0, 18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,16 +129,10 @@ public class EndScreen extends javax.swing.JFrame {
 
     private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_btnPlayAgainActionPerformed
         // TODO add your handling code here:
-        TimeUnit.SECONDS.sleep(2);
         Main ex = new Main();
         ex.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPlayAgainActionPerformed
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,7 +159,6 @@ public class EndScreen extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(EndScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

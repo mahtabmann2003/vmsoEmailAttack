@@ -67,11 +67,7 @@ public class StartScreen extends javax.swing.JFrame {
         btnPlay.setBorder(null);
         btnPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    btnPlayActionPerformed(evt);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                btnPlayActionPerformed(evt);
             }
         });
 
@@ -163,12 +159,11 @@ public class StartScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_btnPlayActionPerformed
+    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
         // TODO add your handling code here:
-        TimeUnit.SECONDS.sleep(2);
         Main ex = new Main();
         ex.setVisible(true);
         this.dispose();
