@@ -1,0 +1,10 @@
+How to Play:
+
+- Open game and type in your name, click play to begin.
+- Use arrow keys to move left and right.
+- Dodge incoming obstacles.
+- If you get hit by an obstacle once, the game is over.
+- The longer you stay alive, the higher your score.
+- Protect vmso at all costs!
+
+HAVE FUN!
