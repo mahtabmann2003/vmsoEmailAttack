@@ -1,0 +1,2 @@
+javac StartScreen.java
+java StartScreen
