@@ -5,7 +5,6 @@
  */
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -44,7 +43,7 @@ public class EndScreen extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vmsoEnd.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/vmsoEnd.png"))); // NOI18N
 
         btnPlayAgain.setBackground(new java.awt.Color(0, 0, 0));
         btnPlayAgain.setFont(new java.awt.Font("Chalkduster", 0, 24)); // NOI18N

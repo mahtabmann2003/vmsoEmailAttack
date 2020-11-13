@@ -11,9 +11,6 @@ import java.io.FileWriter;
 import java.io.File;
 import java.util.Scanner;
 
-
-import java.util.concurrent.TimeUnit;
-
 public class Board extends JPanel {
 
     private Timer timer;
@@ -36,10 +33,10 @@ public class Board extends JPanel {
         setFocusable(true);
 
 
-        enemy1 = new Sprite("gmail.png",2,0, ThreadLocalRandom.current().nextInt(0,  700), -500);
-        enemy2 = new Sprite("email2.png", 3,0, ThreadLocalRandom.current().nextInt(0,  700), -540);
-        enemy3 = new Sprite("email3.png", 4,0, ThreadLocalRandom.current().nextInt(0,  700), -560);
-        vmsoShip = new Sprite("vmso.png", 0,0, 250,390);
+        enemy1 = new Sprite("assets/gmail.png",2,0, ThreadLocalRandom.current().nextInt(0,  700), -500);
+        enemy2 = new Sprite("assets/gmail.png", 3,0, ThreadLocalRandom.current().nextInt(0,  700), -540);
+        enemy3 = new Sprite("assets/gmail.png", 4,0, ThreadLocalRandom.current().nextInt(0,  700), -560);
+        vmsoShip = new Sprite("assets/vmso.png", 0,0, 250,390);
 
         status = true;
         startTime = System.currentTimeMillis();
@@ -118,10 +115,10 @@ public class Board extends JPanel {
     }
 
     public void collisionCheck() throws IOException {
-        Rectangle r = new Rectangle(vmsoShip.getX(), vmsoShip.getY(), vmsoShip.getWidth(), vmsoShip.getWidth());
-        Rectangle p = new Rectangle(enemy1.getX(), enemy1.getY(), enemy1.getWidth(), enemy1.getHeight());
-        Rectangle q = new Rectangle(enemy2.getX(), enemy2.getY(), enemy2.getWidth(), enemy2.getHeight());
-        Rectangle d = new Rectangle(enemy3.getX(), enemy3.getY(), enemy3.getWidth(), enemy3.getHeight());
+        Rectangle r = new Rectangle(vmsoShip.getX(), vmsoShip.getY(), vmsoShip.getWidth() - 25, vmsoShip.getHeight());
+        Rectangle p = new Rectangle(enemy1.getX(), enemy1.getY(), enemy1.getWidth()-20, enemy1.getHeight() - 20);
+        Rectangle q = new Rectangle(enemy2.getX(), enemy2.getY(), enemy2.getWidth()-20, enemy2.getHeight() - 20);
+        Rectangle d = new Rectangle(enemy3.getX(), enemy3.getY(), enemy3.getWidth()-20, enemy3.getHeight() - 20);
 
         if (r.intersects(p)){
             gameEnd();
