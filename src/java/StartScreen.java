@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,7 +19,7 @@ public class StartScreen extends javax.swing.JFrame {
     /**
      * Creates new form ScreenMain
      */
-    public StartScreen() {
+    public StartScreen() throws FileNotFoundException {
         initComponents();
     }
 
@@ -26,7 +30,16 @@ public class StartScreen extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents() throws FileNotFoundException {
+        String fileData = "", fileName = "";
+        
+        Scanner myReader = new Scanner(new File("score.txt"));
+        while (myReader.hasNextLine()) {
+            fileData = myReader.nextLine();
+            fileName = myReader.nextLine();
+        }
+        myReader.close();
+
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -67,7 +80,11 @@ public class StartScreen extends javax.swing.JFrame {
         btnPlay.setBorder(null);
         btnPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayActionPerformed(evt);
+                try {
+                    btnPlayActionPerformed(evt);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -154,6 +171,7 @@ public class StartScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+        highscoreOut.setText(fileData +" - " +fileName);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,9 +180,10 @@ public class StartScreen extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
+    private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_btnPlayActionPerformed
         // TODO add your handling code here:
-        Main ex = new Main();
+        String name = nameIn.getText();
+        Main ex = new Main(name);
         ex.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPlayActionPerformed
@@ -203,7 +222,11 @@ public class StartScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StartScreen().setVisible(true);
+                try {
+                    new StartScreen().setVisible(true);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

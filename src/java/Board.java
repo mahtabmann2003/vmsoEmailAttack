@@ -2,28 +2,39 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
+import java.io.FileWriter;
+import java.io.File;
+import java.util.Scanner;
+
+
 import java.util.concurrent.TimeUnit;
 
 public class Board extends JPanel {
 
     private Timer timer;
-
     private Sprite enemy1, enemy2, enemy3, vmsoShip;
+    String username;
     private boolean status;
+    private long score, startTime, endTime;
 
-    public Board() {
 
+
+    public Board(String name) throws IOException {
+        username = name;
         initBoard();
     }
 
-    private void initBoard() {
+    private void initBoard() throws IOException {
 
         addKeyListener(new TAdapter());
         setBackground(Color.black);
         setFocusable(true);
+
 
         enemy1 = new Sprite("gmail.png",2,0, ThreadLocalRandom.current().nextInt(0,  700), -500);
         enemy2 = new Sprite("email2.png", 3,0, ThreadLocalRandom.current().nextInt(0,  700), -540);
@@ -31,6 +42,7 @@ public class Board extends JPanel {
         vmsoShip = new Sprite("vmso.png", 0,0, 250,390);
 
         status = true;
+        startTime = System.currentTimeMillis();
         timer = new Timer();
         timedLoop();
 
@@ -40,12 +52,16 @@ public class Board extends JPanel {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                gameLoop();
+                try {
+                    gameLoop();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }, 100, 10);
     }
 
-    private void gameLoop(){ //Game logic done here...loops repeats every 0.1 second
+    private void gameLoop() throws IOException { //Game logic done here...loops repeats every 0.1 second
         if(status) {
             step(enemy1);
             step(enemy2);
@@ -101,7 +117,7 @@ public class Board extends JPanel {
                 sprite.getWidth()+2, sprite.getHeight()+2);
     }
 
-    public void collisionCheck(){
+    public void collisionCheck() throws IOException {
         Rectangle r = new Rectangle(vmsoShip.getX(), vmsoShip.getY(), vmsoShip.getWidth(), vmsoShip.getWidth());
         Rectangle p = new Rectangle(enemy1.getX(), enemy1.getY(), enemy1.getWidth(), enemy1.getHeight());
         Rectangle q = new Rectangle(enemy2.getX(), enemy2.getY(), enemy2.getWidth(), enemy2.getHeight());
@@ -120,10 +136,41 @@ public class Board extends JPanel {
         }
     }
 
-    public void gameEnd() {
-        EndScreen ex = new EndScreen();
-        ex.setVisible(true);
+    public void gameEnd() throws IOException {
         status = false;
+        endTime = System.currentTimeMillis();
+        score = (endTime - startTime)/1000;
+
+        String fileData = "";
+        String fileName = "";
+
+        //Gets current high score + name
+        Scanner myReader = new Scanner(new File("score.txt"));
+        while (myReader.hasNextLine()) {
+            fileData = myReader.nextLine();
+            fileName = myReader.nextLine();
+        }
+        myReader.close();
+
+        //If new score is higher it will rewrite old score
+        FileWriter myWriter = new FileWriter("score.txt");
+        BufferedWriter out = new BufferedWriter(myWriter);
+        if(score > Integer.parseInt(fileData)){
+            out.write(Long.toString(score));
+            out.newLine();
+            out.write(username);
+        }
+        else {
+            out.write(fileData);
+            out.newLine();
+            out.write(fileName);
+        }
+        out.close();
+
+        //Open game over window
+        EndScreen ex = new EndScreen(score, username);
+        ex.setVisible(true);
+
     }
 
 

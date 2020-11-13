@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -12,11 +13,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class EndScreen extends javax.swing.JFrame {
 
+    String username;
     /**
      * Creates new form EndScreen
      */
-    public EndScreen() {
+    public EndScreen(long score, String name) {
         initComponents();
+        scoreOut.setText(String.valueOf(score));
+        username = name;
     }
 
     /**
@@ -51,7 +55,7 @@ public class EndScreen extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
                     btnPlayAgainActionPerformed(evt);
-                } catch (InterruptedException e) {
+                } catch (InterruptedException | IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -127,9 +131,9 @@ public class EndScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_btnPlayAgainActionPerformed
+    private void btnPlayAgainActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException, IOException {//GEN-FIRST:event_btnPlayAgainActionPerformed
         // TODO add your handling code here:
-        Main ex = new Main();
+        Main ex = new Main(username);
         ex.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPlayAgainActionPerformed
@@ -164,7 +168,7 @@ public class EndScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EndScreen().setVisible(true);
+                new EndScreen(0,"name").setVisible(true);
             }
         });
     }

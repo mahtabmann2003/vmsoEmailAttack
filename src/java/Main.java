@@ -1,17 +1,19 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main extends JFrame {
-
-    public Main(){
-
+    String username;
+    public Main(String name) throws IOException {
+        username = name;
         initUI();
     }
 
-    private void initUI() {
+    private void initUI() throws IOException {
 
-        add(new Board());
+        add(new Board(username));
 
         setTitle("Moving sprite");
         setSize(700, 500);
@@ -24,7 +26,12 @@ public class Main extends JFrame {
     public static void main(String[] args) {
 
         EventQueue.invokeLater(() -> {
-            StartScreen ex = new StartScreen();
+            StartScreen ex = null;
+            try {
+                ex = new StartScreen();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             ex.setVisible(true);
         });
     }
