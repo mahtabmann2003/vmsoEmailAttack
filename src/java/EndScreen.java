@@ -72,13 +72,13 @@ public class EndScreen extends javax.swing.JFrame {
         });
 
         jLabel2.setBackground(new java.awt.Color(153, 0, 0));
-        jLabel2.setFont(new java.awt.Font("Kohinoor Gujarati", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Chalkduster", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 0, 0));
         jLabel2.setText("Score:");
 
         scoreOut.setEditable(false);
         scoreOut.setBackground(new java.awt.Color(0, 0, 0));
-        scoreOut.setFont(new java.awt.Font("Kohinoor Gujarati", 1, 18)); // NOI18N
+        scoreOut.setFont(new java.awt.Font("Chalkduster", 1, 18)); // NOI18N
         scoreOut.setForeground(new java.awt.Color(153, 0, 0));
         scoreOut.setBorder(null);
 

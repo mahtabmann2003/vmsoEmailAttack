@@ -51,7 +51,7 @@ public class StartScreen extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(153, 0, 0));
         jLabel2.setText("VMSO EMAIL ATTACK");
 
-        btnExit.setBackground(new java.awt.Color(153, 0, 0));
+        btnExit.setBackground(new java.awt.Color(0, 0, 0));
         btnExit.setFont(new java.awt.Font("Chalkduster", 0, 36)); // NOI18N
         btnExit.setForeground(new java.awt.Color(153, 0, 0));
         btnExit.setText("EXIT");
@@ -62,7 +62,7 @@ public class StartScreen extends javax.swing.JFrame {
             }
         });
 
-        btnPlay.setBackground(new java.awt.Color(153, 0, 0));
+        btnPlay.setBackground(new java.awt.Color(0, 0, 0));
         btnPlay.setFont(new java.awt.Font("Chalkduster", 0, 36)); // NOI18N
         btnPlay.setForeground(new java.awt.Color(153, 0, 0));
         btnPlay.setText("PLAY");
@@ -77,17 +77,17 @@ public class StartScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Kohinoor Gujarati", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Chalkduster", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setText("High Score:");
 
         highscoreOut.setEditable(false);
         highscoreOut.setBackground(new java.awt.Color(0, 0, 0));
-        highscoreOut.setFont(new java.awt.Font("Kohinoor Gujarati", 1, 18)); // NOI18N
+        highscoreOut.setFont(new java.awt.Font("Chalkduster", 1, 18)); // NOI18N
         highscoreOut.setForeground(new java.awt.Color(153, 0, 0));
         highscoreOut.setBorder(null);
 
-        jLabel3.setFont(new java.awt.Font("Kohinoor Gujarati", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Chalkduster", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 0, 0));
         jLabel3.setText("Name:");
 
