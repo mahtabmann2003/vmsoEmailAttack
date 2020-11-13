@@ -24,7 +24,7 @@ public class Main extends JFrame {
     public static void main(String[] args) {
 
         EventQueue.invokeLater(() -> {
-            Main ex = new Main();
+            StartScreen ex = new StartScreen();
             ex.setVisible(true);
         });
     }

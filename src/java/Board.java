@@ -1,14 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
 
 public class Board extends JPanel {
 
@@ -111,13 +107,18 @@ public class Board extends JPanel {
         Rectangle d = new Rectangle(enemy3.getX(), enemy3.getY(), enemy3.getWidth(), enemy3.getHeight());
 
         if (r.intersects(p)){
-            System.exit(0);
+            EndScreen ex = new EndScreen();
+            ex.setVisible(true);
+
         }
         if (r.intersects(q)) {
-            System.exit(0);
+            EndScreen ex = new EndScreen();
+            ex.setVisible(true);
+
         }
         if (r.intersects(d)){
-            System.exit(0);
+            EndScreen ex = new EndScreen();
+            ex.setVisible(true);
         }
     }
 
